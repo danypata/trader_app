@@ -1,0 +1,6 @@
+{
+  "finhub_api_url": "https://finnhub.io/api/v1/",
+  "finhub_socket_url": "wss://ws.finnhub.io/",
+  "finhub_token": "cs8i5v9r01qu0vk4de4gcs8i5v9r01qu0vk4de50",
+  "FLAVOR": "dev"
+}
