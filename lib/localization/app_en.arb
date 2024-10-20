@@ -19,7 +19,7 @@
       }
     }
   },
-  "lastPrice": "Last Price",
-  "date": "Date",
-  "tradeConditions": "TC"
+  "lastPrice": "Last Price:",
+  "date": "Date:",
+  "tradeConditions": "TC:"
 }

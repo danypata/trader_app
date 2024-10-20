@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:built_collection/built_collection.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:trader_app/src/symbols_list/repo/models/price_variation.dart';
 import 'package:trader_app/src/symbols_list/repo/models/symbols_event.dart';
 import 'package:trader_app/src/symbols_list/repo/models/symbols_info.dart';
 import 'package:trader_app/src/symbols_list/services/symbols/models/symbol_data.dart';
@@ -123,10 +124,22 @@ class SymbolsRepo {
 
   List<SymbolsInfo> _convert(TradesData trades) {
     trades.data?.where((item) => item.isValid).forEach((item) {
-      final isWatched = _watchedSymbols[item.symbol!] != null;
-      final description = _loadedSymbols[item.symbol!];
+      final key = item.symbol!;
+
+      final isWatched = _watchedSymbols[key] != null;
+      final description = _loadedSymbols[key];
+      final latestReading = _latestReadings[key];
+      var variation = PriceVariation.same;
+      if (latestReading != null) {
+        if (latestReading.price < item.price!) {
+          variation = PriceVariation.up;
+        } else if (latestReading.price > item.price!) {
+          variation = PriceVariation.down;
+        }
+      }
       final info = SymbolsInfo(
         isWatched: isWatched,
+        variation: variation,
         tradeConditions: item.tradeConditions ?? [],
         symbol: item.symbol!,
         price: item.price!,

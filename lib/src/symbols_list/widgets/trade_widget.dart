@@ -1,10 +1,12 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:trader_app/src/common/constants/app_sizes.dart';
 import 'package:trader_app/src/common/extensions/context_extensions.dart';
 import 'package:trader_app/src/common/extensions/string_extensions.dart';
 import 'package:trader_app/src/symbols_list/providers/providers.dart';
+import 'package:trader_app/src/symbols_list/repo/models/price_variation.dart';
 
 class SymbolWidget extends StatelessWidget {
   const SymbolWidget({super.key});
@@ -117,10 +119,16 @@ class _LastPrice extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final price = ref.watch(priceProvider);
+    final priceVariation = ref.watch(priceVariationProvider);
+    final style = context.theme.textTheme.bodyLarge ?? const TextStyle();
+    final textColor = switch (priceVariation) {
+      PriceVariation.up => Colors.green,
+      PriceVariation.down => Colors.red,
+      PriceVariation.same => Colors.black,
+    };
     return Text(
       price.toString(),
-      style: context.theme.textTheme.bodyLarge
-          ?.copyWith(fontWeight: FontWeight.w700),
+      style: style.copyWith(fontWeight: FontWeight.w700, color: textColor),
     );
   }
 }
@@ -131,8 +139,9 @@ class _Date extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final date = ref.watch(dateProvider);
+    final format = DateFormat('MM.dd.yy, HH:mm:ss.SSS');
     return Text(
-      date.toIso8601String(),
+      format.format(date),
       style: context.theme.textTheme.bodyLarge
           ?.copyWith(fontWeight: FontWeight.w700),
     );

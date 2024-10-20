@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:trader_app/src/symbols_list/repo/models/price_variation.dart';
 
 part 'symbols_info.freezed.dart';
 
@@ -12,6 +13,7 @@ class SymbolsInfo with _$SymbolsInfo {
     required DateTime time,
     required double volume,
     required String description,
+    required PriceVariation variation,
   }) = _SymbolsInfo;
 
   const SymbolsInfo._();
@@ -28,6 +30,7 @@ class SymbolsInfo with _$SymbolsInfo {
       price: 0,
       time: DateTime.now(),
       volume: 0,
+      variation: PriceVariation.same,
       description: description,
     );
   }

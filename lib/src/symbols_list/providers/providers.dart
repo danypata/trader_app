@@ -1,11 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:trader_app/src/symbols_list/repo/models/price_variation.dart';
 
 final symbolProvider = Provider<String>((_) {
   throw UnimplementedError('this should be overriden');
 });
 
 final priceProvider = Provider<double>((_) {
+  throw UnimplementedError('this should be overriden');
+});
+
+final priceVariationProvider = Provider<PriceVariation>((_) {
   throw UnimplementedError('this should be overriden');
 });
 

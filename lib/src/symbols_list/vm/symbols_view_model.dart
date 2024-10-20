@@ -13,8 +13,8 @@ class SymbolsViewModel extends _$SymbolsViewModel {
   late SymbolsRepo _repo;
 
   @override
-  SymbolsState build(String exchange, int id) {
-    _repo = ref.read(symbolsRepoProvider(id));
+  SymbolsState build(String exchange) {
+    _repo = ref.read(symbolsRepoProvider(Random().nextInt(999)));
     _loadSymbols();
     ref.onDispose(() {
       _repo.disconnect();

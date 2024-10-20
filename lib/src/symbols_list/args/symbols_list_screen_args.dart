@@ -27,8 +27,6 @@ class SymbolsListScreenArgs with _$SymbolsListScreenArgs {
 
   static const argsKey = 'symbol';
 
-  int get id => Random().nextInt(9999);
-
   Map<String, String> toUriParams() {
     return {
       argsKey: Uri.encodeComponent(jsonEncode(toJson())),

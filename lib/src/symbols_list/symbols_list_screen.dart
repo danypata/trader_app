@@ -13,7 +13,7 @@ class SymbolsListScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final provider = symbolsViewModelProvider(args.searchString, args.id);
+    final provider = symbolsViewModelProvider(args.searchString);
     final vm = ref.read(provider.notifier);
     final data = ref.watch(provider);
 
@@ -40,6 +40,7 @@ class SymbolsListScreen extends HookConsumerWidget {
                   .overrideWithValue(info.tradeConditions.join(', ')),
               descriptionProvider.overrideWithValue(info.description),
               callbackProvider.overrideWithValue(callback),
+              priceVariationProvider.overrideWithValue(info.variation),
             ],
             child: const SymbolWidget(),
           );
