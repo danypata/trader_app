@@ -1,0 +1,25 @@
+{
+  "oanda": "OANDA",
+  "fxcm": "FXCM",
+  "forexDotCom": "forex.com",
+  "icMarkets": "IC Markets",
+  "fxpro": "FXPro",
+  "fhfx": "FHFX",
+  "capital": "CAPITAL",
+  "icmtrader": "ICMTRADER",
+  "pepperstoneuk": "PEPPERSTONEUK",
+  "fxpig": "FXPIG",
+  "pepperstone": "PEPPERSTONE",
+  "exchange": "Forex exchange",
+  "symbolName": "Exchange - {symbol}",
+  "@symbolName": {
+    "placeholders": {
+      "symbol": {
+        "type": "String"
+      }
+    }
+  },
+  "lastPrice": "Last Price",
+  "date": "Date",
+  "tradeConditions": "TC"
+}

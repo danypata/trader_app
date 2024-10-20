@@ -1,0 +1,41 @@
+#  https://pub.dev/packages/dart_define
+# generate dart_define class: flutter pub run dart_define generate --yaml_path=dart_define.yaml
+# run app: flutter run --dart-define-from-file=dart_define_config/dev.json
+dart_define:
+
+  # OPTIONAL: Whether to generate the dart boilerplate or not.
+  # Defaults to true
+  dart: true
+
+  # OPTIONAL: Whether to generate the json boilerplate or not.
+  # Defaults to true
+  json: true
+
+  # OPTIONAL: The path to the json file to generate.
+  json_path: dart_define_config/dev.json
+
+  # OPTIONAL: The path to the dart file to generate.
+  dart_path: lib/src/gen/app_config.gen.dart
+
+  # OPTIONAL: The name of the generated class.
+  class_name: app_config
+
+  # REQUIRED: The variables to add to the generated config files
+  variables:
+
+    - name: finhub_api_url
+      description: Finhub REST api URL
+      required: true
+    - name: finhub_socket_url
+      description: Finhub websocket url
+      required: true
+    - name: finhub_token
+      description: Finhub auth token
+      required: true
+
+  flavors:
+
+    - name: prod
+      description: The production flavor
+    - name: dev
+      description: The development flavor
