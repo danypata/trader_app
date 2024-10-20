@@ -2,15 +2,15 @@
 
 Exinity interview app
 
-## Getting Started
+## Before running the app
 
-This project is a starting point for a Flutter application.
+The freezed and json generated code is not commited to github so first run:
+`dart run build_runner build --delete-conflicting-outputs && flutter pub get`
 
-A few resources to get you started if this is your first Flutter project:
+to generate everything and have the localizations in place.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+For running the project you have to provide the: `--dart-define-from-file=dev.json` arguments.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Normally, the dev.json file would not be commited and it would only be available on
+local machine, but to reduce the setup time I decided to add it to github.
+
